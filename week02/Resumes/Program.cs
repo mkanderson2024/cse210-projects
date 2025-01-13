@@ -10,7 +10,19 @@ class Program
         job1._startYear = 2019;
         job1._endYear = 2022;
 
-        // Job job2 = new Job();
-        // job2._jobTitle = "Software Developer"
+        Job job2 = new Job();
+        job2._jobTitle = "Software Development Manager";
+        job2._company = "Apple";
+        job2._startYear = 2023;
+        job2._endYear = 2024;
+
+        Resume resume = new Resume();
+        resume._name = "Michael Anderson";
+
+        resume._jobs.Add(job1);
+        resume._jobs.Add(job2);
+
+        resume.Display();
+
     }
 }
