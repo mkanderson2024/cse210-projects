@@ -74,8 +74,10 @@ class Program
             {
                 string backUpFile = @"journalBackupFile.txt";
                 File.Delete(backUpFile);
-                
-
+                userInput = 0;
+                Console.WriteLine("Thank you for journaling today");
+                int milliseconds = 2000;
+                Thread.Sleep(milliseconds);
             }
             else //Recycle menu
             {
