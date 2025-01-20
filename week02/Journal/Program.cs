@@ -1,5 +1,7 @@
 using System;
 using System.Dynamic;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 class Program
 {
@@ -21,7 +23,7 @@ class Program
             string responce = Console.ReadLine();
             userInput = int.Parse(responce);
 
-            if (userInput == 1)
+            if (userInput == 1) //Write
             {
                 // Creates prompt and displays for user
                 PromptGenerator promptGenerator = new PromptGenerator();
@@ -39,41 +41,46 @@ class Program
                 theEntry._promptText = randomPrompt;
                 theEntry.Display();
                 // Writes entry to entries list in Journal
+                // Journal newEntry = new Journal();
+                // newEntry._entries.Add(theEntry);
+                string textSave = theEntry.Convert();
                 Journal newEntry = new Journal();
-                newEntry._entries.Add(theEntry);
+                newEntry.AddEntry(textSave, "journalBackupFile.txt");
             }
 
-            else if (userInput == 2)
+            else if (userInput == 2) //Display
             {
-
+                Journal review = new Journal();
+                review.DisplayAll();
             }
 
-            else if (userInput == 3)
+            else if (userInput == 3) //Load
             {
-
+                Console.Write("Input name of file to load: ");
+                string fileName = Console.ReadLine();
+                Journal loadFile = new Journal();
+                loadFile.LoadFromFile(fileName);
             }
 
-            else if (userInput == 4)
+            else if (userInput == 4) //Save
             {
                 Console.Write("Input name for file: ");
                 string fileName = Console.ReadLine();
                 Journal saveFile = new Journal();
-                saveFile.SaveToFile(fileName);
+                saveFile.SaveNewFile(fileName);
 
             }
+            else if (userInput == 5) //Quit
+            {
+                string backUpFile = @"journalBackupFile.txt";
+                File.Delete(backUpFile);
+                
 
-            else
+            }
+            else //Recycle menu
             {
                 userInput = -1;
             }
-
-
-
-
-
-
-
         }
-
     }
 }
