@@ -18,7 +18,7 @@ class Program
             {
                 Console.WriteLine(option);
             }
-
+            Console.WriteLine("");
             Console.Write("What would you like to do? ");
             string responce = Console.ReadLine();
             userInput = int.Parse(responce);
@@ -50,6 +50,7 @@ class Program
 
             else if (userInput == 2) //Display
             {
+                Console.WriteLine("\n");
                 Journal review = new Journal();
                 review.DisplayAll();
             }
@@ -75,7 +76,7 @@ class Program
                 string backUpFile = @"journalBackupFile.txt";
                 File.Delete(backUpFile);
                 userInput = 0;
-                Console.WriteLine("Thank you for journaling today");
+                Console.WriteLine("\nThank you for journaling today");
                 int milliseconds = 2000;
                 Thread.Sleep(milliseconds);
             }

@@ -13,7 +13,7 @@ public class Journal
         {
             backUpFile.WriteLine(textString);
         }
-        Console.WriteLine("\n---Entry added---");
+        Console.WriteLine("\n---Entry added---\n");
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);
     }
@@ -22,7 +22,6 @@ public class Journal
         string[] lines = System.IO.File.ReadAllLines(@"journalBackupFile.txt");
         foreach (string line in lines)
         {
-            Console.WriteLine("\n");
             Console.WriteLine(line);
         }
         int milliseconds = 2000;
@@ -33,6 +32,10 @@ public class Journal
     {
         string sourceFile = $"{file}.txt";
         string destinationFile = @"journalBackupFile.txt";
+        if (File.Exists(destinationFile) == true)
+        {
+            File.Delete(destinationFile);
+        }
         File.Copy(sourceFile, destinationFile);
         Console.WriteLine("\n---File Loaded---\n");
         int milliseconds = 2000;
@@ -43,8 +46,12 @@ public class Journal
     {
         string sourceFile = @"journalBackupFile.txt";
         string destinationFile = $"{file}.txt";
+        if (File.Exists(destinationFile) == true)
+        {
+            File.Delete(destinationFile);
+        }
         File.Copy(sourceFile, destinationFile);
-        Console.WriteLine("\n---File Saved---");
+        Console.WriteLine("\n---File Saved---\n");
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);
     }
