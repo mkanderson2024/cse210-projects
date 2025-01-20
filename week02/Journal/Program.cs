@@ -2,7 +2,12 @@ using System;
 using System.Dynamic;
 using System.IO;
 using System.Runtime.CompilerServices;
-
+/// <summary>
+/// Creativity additions:
+/// Created back up file system fo errors and system crash (I'd really really REALLY hate to loose a journal)
+/// Added file based loaded and saving. Files are copied from or to back up file system.
+/// Lots of user friendly visuals.
+/// </summary>
 class Program
 {
     static void Main(string[] args)
@@ -41,8 +46,6 @@ class Program
                 theEntry._promptText = randomPrompt;
                 theEntry.Display();
                 // Writes entry to entries list in Journal
-                // Journal newEntry = new Journal();
-                // newEntry._entries.Add(theEntry);
                 string textSave = theEntry.Convert();
                 Journal newEntry = new Journal();
                 newEntry.AddEntry(textSave, "journalBackupFile.txt");
