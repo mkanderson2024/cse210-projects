@@ -90,3 +90,55 @@ class Program
         }
     }
 }
+// Alternative Coding to help understand
+//  if (choice == 1)
+//             {
+//                 string randomPrompt = prompt.GetRandomPrompt();
+//                 Console.WriteLine($"{randomPrompt}");
+//                 Console.Write("Journal entry: ");
+//                 string entryText = Console.ReadLine();
+
+//                 DateTime theCurrentTime = DateTime.Now;
+//                 string date = theCurrentTime.ToShortDateString();
+
+//                 Entry newEntry = new Entry
+//                 {
+//                     _date = date,
+//                     _prompt = randomPrompt,
+//                     _entry = entryText
+//                 };
+
+//                 journal.AddEntry(newEntry);
+//                 Console.WriteLine("Your journal entry has been added!\n");
+//             }
+
+//             else if (choice == 2)
+//             {
+//                 journal.DisplayAllEntries();
+//             }
+
+//             else if (choice == 3)
+//             {
+//                 Console.Write("Enter the file you would like to load: ");
+//                 string fileName = Console.ReadLine();
+//                 journal.Load(fileName);
+//                 Console.WriteLine($"{fileName} has been loaded!\n");
+//             }
+//             else if (choice == 4)
+//             {
+//                 Console.Write("Please enter a file name: ");
+//                 string fileName = Console.ReadLine();
+//                 journal.Save(fileName);
+//                 Console.WriteLine("Your entries have been saved!\n");
+//             }
+//             else if (choice == 5)
+//             {
+//                 Console.WriteLine("Thanks for using the Journal Program. Goodbye!");
+//             }
+//             else
+//             {
+//                 Console.WriteLine("Invalid entry. Please try again.");
+//             }
+
+
+//         } while (choice != 5);
