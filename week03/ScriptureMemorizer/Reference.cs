@@ -8,19 +8,26 @@ public class Reference
     private int _verse;
     private int _endVerse;
     private string _multiVerse;
-    public Reference(string book, int chapter, int verse)
+    private string _text;
+    public Reference(string book, int chapter, int verse, string text)
     {
         _book = book;
         _chapter = chapter;
         _verse = verse;
+        _text = text;
     }
-    public Reference(string book, int chapter, int verse, int endVerse)
+    public Reference(string book, int chapter, int verse, int endVerse, string text)
     {
         _book = book;
         _chapter = chapter;
         _verse = verse;
         _endVerse = endVerse;
         _multiVerse = "yes";
+        _text = text;
+    }
+    public string Text
+    {
+        get {return _text;}
     }
 
     public void GetDisplayText()
@@ -28,11 +35,11 @@ public class Reference
         if (_multiVerse == "yes")
         {
             //May need an if statement to help with if there is multiple verses or not.
-            Console.WriteLine($"{_book} {_chapter}: {_verse} - {_endVerse}");
+            Console.WriteLine($"{_book} {_chapter}: {_verse}-{_endVerse} {_text}");
         }
         else
         {
-            Console.WriteLine($"{_book} {_chapter}: {_verse}");
+            Console.WriteLine($"{_book} {_chapter}: {_verse} {_text}");
         }
     }
 

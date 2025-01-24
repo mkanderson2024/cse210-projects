@@ -6,16 +6,17 @@ class Program
     {
         Console.WriteLine("Welcome to the scripture memorizing program.");
         string responce = "";
+        string book = "Proverbs";
+        int chapter = 3;
+        int beginning = 5;
+        int ending = 6;
+        string text = "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him and he shall direct thy paths.";
+        Reference scriptureOne = new Reference(book, chapter, beginning, ending, text);
+        scriptureOne.GetDisplayText();
+
 
         while (responce == "")
         {
-            string book = "Proverbs";
-            int chapter = 3;
-            int beginning = 5;
-            int ending = 6;
-            Reference scriptureOne = new Reference(book, chapter, beginning, ending);
-            scriptureOne.GetDisplayText();
-
             Console.Write("To continue click ENTER key or type quit to exit ");
             responce = Console.ReadLine();
             if (responce == "")
