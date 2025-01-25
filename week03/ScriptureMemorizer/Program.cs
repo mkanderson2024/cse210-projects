@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Starts Program and creates innitial scripture and reference.
         Console.WriteLine("Welcome to the scripture memorizing program.");
         string responce = "";
         string book = "Proverbs";
@@ -21,7 +22,7 @@ class Program
             responce = Console.ReadLine();
             if (responce == "")
             {
-
+                
             }
             else if (responce == "quit")
             {

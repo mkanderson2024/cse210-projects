@@ -9,6 +9,15 @@ public class Reference
     private int _endVerse;
     private string _multiVerse;
     private string _text;
+    public Reference()
+    {
+        _book = "Proverbs";
+        _chapter = 3;
+        _verse = 5;
+        _endVerse = 6;
+        _text = "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him and he shall direct thy paths.";
+    }
+
     public Reference(string book, int chapter, int verse, string text)
     {
         _book = book;
@@ -24,10 +33,6 @@ public class Reference
         _endVerse = endVerse;
         _multiVerse = "yes";
         _text = text;
-    }
-    public string Text
-    {
-        get {return _text;}
     }
 
     public void GetDisplayText()
