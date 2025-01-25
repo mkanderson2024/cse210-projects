@@ -8,7 +8,6 @@ public class Scripture
         string text = scripture;
         string[] splitStrings = text.Split(' ');
         int listCount = splitStrings.Count();
-        Console.WriteLine(listCount);
         return splitStrings;
     }
     //Create a list of boolians to match the list of scriptures
@@ -21,7 +20,6 @@ public class Scripture
             boolianList.Add(true);
         }
         int count = boolianList.Count();
-        Console.WriteLine(count);
         return boolianList;
     }
     private string _reference;

@@ -12,17 +12,17 @@ class Program
         int beginning = 5;
         int ending = 6;
         string text = "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him and he shall direct thy paths.";
-        Reference scriptureOne = new Reference(book, chapter, beginning, ending, text);
-        scriptureOne.GetDisplayText();
-
 
         while (responce == "")
         {
-            Console.Write("To continue click ENTER key or type quit to exit ");
+            Console.Write("To start game press Enter ");
             responce = Console.ReadLine();
             if (responce == "")
             {
-                
+                Reference scriptureOne = new Reference(book, chapter, beginning, ending, text);
+                scriptureOne.GetDisplayText();
+                Word start = new Word();
+                start.IsHiden(text);
             }
             else if (responce == "quit")
             {

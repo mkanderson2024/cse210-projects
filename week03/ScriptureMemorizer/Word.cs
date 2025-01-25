@@ -5,7 +5,27 @@ public class Word
     private string _text;
     private bool _isHidden;
     private bool playing = true;
-    public List<bool> Hide(int r1, int r2, int r3, List<bool> boolList)
+
+    private string HiddingWords(List<bool> boolList, string[] textList)
+    {
+        int count = 0;
+        List<string> tempList = new List<string>();
+        foreach (var item in boolList)
+        {
+            if (item == true)
+            {
+                tempList.Add(textList[count]);
+            }
+            else
+            {
+                tempList.Add("_____");
+            }
+            count++;
+        }
+        string result = String.Join(" ", tempList);
+        return result;
+    }
+    private List<bool> Hide(int r1, int r2, int r3, List<bool> boolList)
     {
         boolList[r1] = false;
         boolList[r2] = false;
@@ -13,7 +33,7 @@ public class Word
 
         return boolList;
     }
-    public void IsHiden()
+    public void IsHiden(string text)
     {
         playing = true;
         Reference scriptureReference = new Reference();
@@ -32,18 +52,18 @@ public class Word
             tempList.Clear();
             //Random Number Generator with chekcs for used number
             //For randomOne
-            int randomOne = rnd.Next(0, listLength);
+            int randomOne = rnd.Next(0, listLength - 1);
             while (boolList[randomOne] != true)
             {
-                randomOne = rnd.Next(0, listLength);
+                randomOne = rnd.Next(0, listLength - 1);
             }
             //For randomTwo
-            int randomTwo = rnd.Next(0, listLength);
+            int randomTwo = rnd.Next(0, listLength - 1);
             if (counter > 1)
             {
                 while ((randomTwo == randomOne) & (boolList[randomTwo] != true))
                 {
-                    randomTwo = rnd.Next(0, listLength);
+                    randomTwo = rnd.Next(0, listLength - 1);
                 }
             }
             else
@@ -51,7 +71,7 @@ public class Word
                 modifier = 1;
             }
             //For randomThree
-            int randomThree = rnd.Next(0, listLength);
+            int randomThree = rnd.Next(0, listLength - 1);
             if (counter > 2)
             {
                 while ((randomThree == randomTwo) & (boolList[randomThree] != true))
@@ -63,15 +83,28 @@ public class Word
             {
                 modifier = 2;
             }
+
+            if (counter >= 3)
+            {
+                modifier = 3;
+            }
             //Gets user input
             Console.Write("To continue click ENTER key to hide words or type quit to return to menu ");
             responce = Console.ReadLine();
             //Hides words
             if (responce == "")
             {
+                Console.Clear();
                 boolList = Hide(randomOne, randomTwo, randomThree, boolList);
+                string newText = HiddingWords(boolList, textList);
+                Console.WriteLine(newText);
             }
-
+            else if (counter == 0)
+            {
+                Console.WriteLine("No more words left. Recite out Loud");
+                Console.ReadLine();
+                break;
+            }
             else if (responce == "quit")
             {
                 break;
