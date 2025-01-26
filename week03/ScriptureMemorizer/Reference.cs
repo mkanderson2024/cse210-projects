@@ -1,5 +1,5 @@
 using System;
-
+//Added plugins for future expansion of the program allowing for inputs of different scriptures. Created a default scripture if no inputs were added.
 public class Reference
 {
 
@@ -46,6 +46,14 @@ public class Reference
         {
             Console.WriteLine($"{_book} {_chapter}: {_verse} {_text}");
         }
+    }
+    public string GetReference()
+    {
+        return $"{_book} {_chapter}: {_verse}-{_endVerse}";
+    }
+    public string GetVerseText()
+    {
+        return _text;
     }
 
 }
