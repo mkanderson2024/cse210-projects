@@ -1,5 +1,5 @@
 using System;
-//Added plugins for future expansion of the program allowing for inputs of different scriptures. Created a default scripture if no inputs were added.
+//Added plugins through constructors for future expansion of the program allowing for inputs of different scriptures. Created a default scripture if no inputs were added.
 public class Reference
 {
 
@@ -9,6 +9,7 @@ public class Reference
     private int _endVerse;
     private string _multiVerse;
     private string _text;
+    //Constructors
     public Reference()
     {
         _book = "Proverbs";
