@@ -2,12 +2,12 @@ using System;
 
 public class Comment
 {
-    private string _name;
+    public string _name { get; set; }
 
-    private string _comment;
-
-    public void ReturnComment()
+    public string _comment { get; set; }
+    public Comment(string name, string comment)
     {
-        Console.WriteLine();
+        _name = name;
+        _comment = comment;
     }
 }

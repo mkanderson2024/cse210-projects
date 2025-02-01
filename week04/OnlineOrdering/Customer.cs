@@ -7,6 +7,4 @@ public class Customer
 
     Address address = new Address();
     address.CreateAddress();
-
-
 }
