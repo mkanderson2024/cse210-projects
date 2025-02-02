@@ -30,7 +30,7 @@ class Program
         Console.WriteLine($"Packaging Label: {order1.ProducePackingLabel()}");
         Console.WriteLine("------Shipping Label-----\n");
         Console.WriteLine($"Shipping Label: {order1.ProduceShippingLabel()}\n");
-
+        //ORder 2
         Console.WriteLine("--------Order 2--------");
         Console.WriteLine($"Total Cost: ${order2.CaculateCost()}");
         Console.WriteLine("------Packaging Label------\n");
