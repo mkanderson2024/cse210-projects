@@ -8,6 +8,14 @@ public class Address
     private string _city;
     private string _stateProvince;
     private string _country;
+    public Address(string street, string address, string city, string stateProvince, string country)
+    {
+        _street = street;
+        _address = address;
+        _city = city;
+        _stateProvince = stateProvince;
+        _country = country;
+    }
     public string CreateAddress()
     {
         return $"{_street} {_address} {_city}, {_stateProvince}, {_country}";
