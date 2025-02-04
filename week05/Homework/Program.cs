@@ -12,7 +12,7 @@ class Program
         //When calling the GetSummary you can also call it this way alternately but be sure to put the () after or you'll get the above error
         Console.WriteLine(assignment2.GetSummary());
         Console.WriteLine(assignment2.GetHomeworkList());
-        //Remember when instatntiating WritingAssignment args: _studentName,        _topic      ,        _title                              all from the assignmetn constructor
+        //Remember when instatntiating WritingAssignment args: _studentName,        _topic      ,        _title                              all from the WritingAssignment constructor
         WritingAssignment assingment3 = new WritingAssignment("Mary Waters", "European History", "The Cause of World War II by Mary Waters");
         Console.WriteLine(assingment3.GetSummary());
         Console.WriteLine(assingment3.GetWritingInformation());
