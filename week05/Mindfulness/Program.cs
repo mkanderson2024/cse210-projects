@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
         //Constants
+        Console.Clear();
         int userInput = -1;
         bool exit = false;
         Console.WriteLine("Welcome to the Mindfulness activity.");
@@ -34,13 +35,39 @@ class Program
                 a1.DisplayEndingMessage();
                 a1.ShowSpinner(5);
             }
+            if (userInput == 2)
+            {
+                
+            }
+            //Listing Activity
             if (userInput == 3)
             {
                 ListingActivity a2 = new ListingActivity("Listing", "reflect on times in your life when you have shown strength, resiliance, and connection to the spirt in your life by writing it down.");
                 a2.DisplayStartingMessage();
                 Console.Clear();
                 a2.GetRandomPrompt();
-
+                a2.Run();
+                a2.DisplayEndingMessage();
+                a2.ShowSpinner(5);
+            }
+            if (userInput == 4)
+            {
+                Console.Clear();
+                Console.WriteLine("Thank you for using the Mindfulness Program! Closing Program.");
+                DateTime startTime = DateTime.Now;
+                DateTime endTime = startTime.AddSeconds(5);
+                DateTime currentTime = DateTime.Now;
+                Console.WriteLine("");
+                while (currentTime < endTime)
+                {
+                    Console.Write("-");
+                    Thread.Sleep(1000);
+                    currentTime = DateTime.Now;
+                }
+                Console.WriteLine("Until Next time! -----");
+                Thread.Sleep(2000);
+                Console.Clear();
+                exit = true;
             }
         }
     }

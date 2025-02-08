@@ -32,7 +32,7 @@ public class Activity
     }
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("Well done!");
+        Console.WriteLine("\nWell done!");
     }
     public void ShowSpinner(int seconds)
     {

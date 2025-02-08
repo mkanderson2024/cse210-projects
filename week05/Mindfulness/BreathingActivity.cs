@@ -16,16 +16,14 @@ public class BreathingActivity : Activity
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine(duration);
 
         while (currentTime < endTime)
         {
-            Console.Clear();
             Console.WriteLine("-----Breath in-----");
             ShowCountDown(5);
-            Console.Clear();
-            Console.WriteLine("-----Breath out-----");
+            Console.WriteLine("\n-----Breath out-----");
             ShowCountDown(5);
+            Console.Clear();
             currentTime = DateTime.Now;
         }
     }
