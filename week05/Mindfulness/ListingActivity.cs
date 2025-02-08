@@ -6,8 +6,12 @@ public class ListingActivity : Activity
 {
     //Member Attributes
     private int _count;
-    List<string> _prompts = new List<string>{"Who are the poeple that you appreciate?","What are personal strengths of yours?","Who are people that you have helped this week?",
-    "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?","List the days in the week when you took time to just have quiet time and felt God's presence."};
+    List<string> _prompts = new List<string>{"Who are the poeple that you appreciate?",
+    "What are personal strengths of yours?",
+    "Who are people that you have helped this week?",
+    "When have you felt the Holy Ghost this month?",
+    "Who are some of your personal heroes?",
+    "List the days in the week when you took time to just have quiet time and felt God's presence."};
     List<string> _responces = new List<string>();
     //Constructor
     public ListingActivity(string activityName, string description) : base(activityName, description)
@@ -36,7 +40,7 @@ public class ListingActivity : Activity
         ShowSpinner(3);
     }
 
-    public void GetRandomPrompt()
+    public void GetListingPrompt()
     {
         Random prompts = new Random();
         int number = prompts.Next(_prompts.Count);
@@ -45,7 +49,6 @@ public class ListingActivity : Activity
         Console.WriteLine($"\n---{prompt}---");
         Console.Write("\nWhen ready, press enter to continue ");
         Console.ReadLine();
-
     }
 
     public void GetListFromUser()

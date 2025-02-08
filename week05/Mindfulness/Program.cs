@@ -1,5 +1,7 @@
 using System;
 
+//For added creativity, added an animation and a good bye message once user chooses to quit.
+
 class Program
 {
     static void Main(string[] args)
@@ -34,21 +36,29 @@ class Program
                 Console.Clear();
                 a1.DisplayEndingMessage();
                 a1.ShowSpinner(5);
+                Console.Clear();
             }
+            // Reflecting Activity
             if (userInput == 2)
             {
-                
+                ReflectingActivity a2 = new ReflectingActivity("Reflecting", "reflect on times in your life when you have shown strength, resiliance, and connection to the spirt in your life.");
+                a2.DisplayStartingMessage();
+                Console.Clear();
+                a2.GetReflectionPrmopt();
+                a2.Run();
+
             }
             //Listing Activity
             if (userInput == 3)
             {
-                ListingActivity a2 = new ListingActivity("Listing", "reflect on times in your life when you have shown strength, resiliance, and connection to the spirt in your life by writing it down.");
-                a2.DisplayStartingMessage();
+                ListingActivity a3 = new ListingActivity("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can when prompted.");
+                a3.DisplayStartingMessage();
                 Console.Clear();
-                a2.GetRandomPrompt();
-                a2.Run();
-                a2.DisplayEndingMessage();
-                a2.ShowSpinner(5);
+                a3.GetListingPrompt();
+                a3.Run();
+                a3.DisplayEndingMessage();
+                a3.ShowSpinner(5);
+                Console.Clear();
             }
             if (userInput == 4)
             {

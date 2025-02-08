@@ -53,7 +53,6 @@ public class Activity
                 currentTime = DateTime.Now;
             }
         }
-        Console.Clear();
     }
     public void ShowCountDown(int seconds)
     {
