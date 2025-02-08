@@ -18,10 +18,13 @@ public class Activity
     public void DisplayStartingMessage()
     {
         Console.WriteLine($"\nYou have chosen the {_name} Activity.");
-        Console.WriteLine($"\n This activity will help you relax by {_description}");
+        Console.WriteLine($"\n This activity will help you {_description}");
         Console.Write("\n How long would you like to do this activity in seconds? ");
         string timeResponce = Console.ReadLine();
         _duration = int.Parse(timeResponce);
+        Console.Clear();
+        Console.WriteLine("\n Get Ready....");
+        ShowSpinner(5);
     }
     public int GetTime()
     {
@@ -65,7 +68,7 @@ public class Activity
             {
                 Console.Write("");
                 Console.Write("\b \b");
-                Console.Write($"{number}");
+                Console.Write($"<( {number} )>   ");
                 Thread.Sleep(1000);
                 currentTime = DateTime.Now;
             }

@@ -21,10 +21,10 @@ public class BreathingActivity : Activity
         while (currentTime < endTime)
         {
             Console.Clear();
-            Console.WriteLine("Breath in");
+            Console.WriteLine("-----Breath in-----");
             ShowCountDown(5);
             Console.Clear();
-            Console.WriteLine("Breath out");
+            Console.WriteLine("-----Breath out-----");
             ShowCountDown(5);
             currentTime = DateTime.Now;
         }

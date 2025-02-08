@@ -27,19 +27,20 @@ class Program
             // BreathingActivity
             if (userInput == 1)
             {
-                BreathingActivity a1 = new BreathingActivity("Breathing", "by walking you through breathing in and out slowly.");
+                BreathingActivity a1 = new BreathingActivity("Breathing", "relax by walking you through breathing in and out slowly.");
                 a1.DisplayStartingMessage();
-                Console.Clear();
-                Console.WriteLine("\n Get Ready....");
-                a1.ShowSpinner(5);
                 a1.Run();
                 Console.Clear();
                 a1.DisplayEndingMessage();
                 a1.ShowSpinner(5);
             }
-            if (userInput == 2)
+            if (userInput == 3)
             {
-                List
+                ListingActivity a2 = new ListingActivity("Listing", "reflect on times in your life when you have shown strength, resiliance, and connection to the spirt in your life by writing it down.");
+                a2.DisplayStartingMessage();
+                Console.Clear();
+                a2.GetRandomPrompt();
+
             }
         }
     }
