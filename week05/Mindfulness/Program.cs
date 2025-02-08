@@ -15,7 +15,7 @@ class Program
         {
             //==============Main Menu==============
             Console.WriteLine("\nPlease choose one of the following options by entering the number:");
-            List<string> options = new List<string> { "1. Start breathing activity", "2. Start Reflecting Activity", "3. Start Listing activity", "4. Quit" };
+            List<string> options = new List<string> { "1. Start Breathing Activity", "2. Start Reflecting Activity", "3. Start Listing Activity", "4. Quit" };
             foreach (string option in options)
             {
                 Console.WriteLine($"    {option}");
@@ -46,6 +46,10 @@ class Program
                 Console.Clear();
                 a2.GetReflectionPrmopt();
                 a2.Run();
+                Console.Clear();
+                a2.DisplayEndingMessage();
+                a2.ShowSpinner(5);
+                Console.Clear();
 
             }
             //Listing Activity
@@ -78,6 +82,13 @@ class Program
                 Thread.Sleep(2000);
                 Console.Clear();
                 exit = true;
+            }
+            else
+            {
+                userInput = -1;
+                Console.WriteLine("Invalid input");
+                Thread.Sleep(2000);
+                Console.Clear();
             }
         }
     }

@@ -28,7 +28,7 @@ public class ReflectingActivity : Activity
     {
         Console.Clear();
         Console.WriteLine("Now ponder each of the following questions as they related to this experience.");
-        Console.WriteLine("Begin in:");
+        Console.WriteLine("\nBegin in:");
         ShowCountDown(5);
         int duration = GetTime();
         DateTime startTime = DateTime.Now;
@@ -36,10 +36,15 @@ public class ReflectingActivity : Activity
         DateTime currentTime = DateTime.Now;
         while (currentTime < endTime)
         {
-            GetRandomQuestion();
-            ShowSpinner(7);
+            string question = GetRandomQuestion();
+            DisplayQuestion(question);
+            Console.WriteLine("");
+            ShowSpinner(8);
+            Console.WriteLine();
+            currentTime = DateTime.Now;
         }
-        Console.WriteLine("You have completed the Refleting Activity.");
+        Console.WriteLine("\nYou have completed the Refleting Activity");
+        ShowSpinner(5);
     }
 
     public void GetReflectionPrmopt()
@@ -48,7 +53,7 @@ public class ReflectingActivity : Activity
         int number = prompts.Next(_prompts.Count);
         string prompt = _prompts[number];
         Console.WriteLine("Consider the following prompt: ");
-        Console.WriteLine($"\n---{prompt}---");
+        Console.WriteLine($"\n--- {prompt} ---");
         Console.Write("\nWhen ready, press enter to continue ");
         Console.ReadLine();
     }
@@ -60,4 +65,9 @@ public class ReflectingActivity : Activity
         string question = _questions[number];
         return question;
     }
+    public void DisplayQuestion(string question)
+    {
+        Console.WriteLine($"\n{question}");
+    }
+
 }

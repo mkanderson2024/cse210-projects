@@ -46,7 +46,7 @@ public class ListingActivity : Activity
         int number = prompts.Next(_prompts.Count);
         string prompt = _prompts[number];
         Console.WriteLine("List as many responces as you can to the following prompt: ");
-        Console.WriteLine($"\n---{prompt}---");
+        Console.WriteLine($"\n--- {prompt} ---");
         Console.Write("\nWhen ready, press enter to continue ");
         Console.ReadLine();
     }
