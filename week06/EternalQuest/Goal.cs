@@ -1,6 +1,6 @@
 using System;
 
-public class Goal
+public abstract class Goal
 {
     //Member Variables
 
@@ -9,26 +9,23 @@ public class Goal
     private string _points = "";
 
     //Constructors
-    public Goal(string name, string description, string points)
+    public Goal(string goalName, string description, string points)
     {
-        _shortName = name;
+        _shortName = goalName;
         _description = description;
         _points = points;
     }
-    public void RecordEvent()
-    {
+    public abstract void RecordEvent();
 
-    }
     public bool IsComplete()
     {
-        return true; //Change this when its needed
+        return true;
     }
+
     public string GetDetailsString()
     {
-        return "addstring"; //Add this
+        return $"{_shortName}: {_description} | {_points} |";
     }
-    public string GetStringRepresentation()
-    {
-        return "addrepresentation"; //Add this
-    }
+
+    public abstract string GetStringRepresentation();
 }

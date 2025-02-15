@@ -1,6 +1,6 @@
 using System;
 
-public class ChecklistGoal
+public class ChecklistGoal : Goal
 {
     //Member Variables
     private int _amountCompleted = 0;
@@ -8,14 +8,15 @@ public class ChecklistGoal
     private int _bonus = 0;
 
     //Constructors
-    public ChecklistGoal(int target, int bonus) //Add inherited strings from Goal
+    public ChecklistGoal(string goalName, string description, string points, int target, int bonus) : base(goalName, description, points) //Add inherited strings from Goal
     {
-
+        _target = target;
+        _bonus = bonus;
     }
 
     //Methods
 
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
@@ -25,9 +26,9 @@ public class ChecklistGoal
     }
     public string GetDetailsString()
     {
-        return "Addstring"; //Add string for details
+        return $"{_target}, {_bonus}";
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return ""; //Add string for representation
     }

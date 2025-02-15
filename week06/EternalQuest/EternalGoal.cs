@@ -1,16 +1,16 @@
 using System;
 
-public class EternalGoal
+public class EternalGoal : Goal
 {
     //Constructors
 
-    public EternalGoal() //Add inherited strings from Goal
+    public EternalGoal(string goalName, string description, string points) : base(goalName, description, points)
     {
 
     }
 
     //Methods
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
@@ -18,7 +18,7 @@ public class EternalGoal
     {
         return true; //Change as needed
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return "Addstring"; //Add string representation
     }

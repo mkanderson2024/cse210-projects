@@ -1,20 +1,20 @@
 using System;
 
-public class SimpleGoal
+public class SimpleGoal : Goal
 {
     //Member Variables
     private bool _isComplete;
 
     //Constructors
 
-    public SimpleGoal() //Add inheritance from goal perameters
+    public SimpleGoal(string goalName, string description, string points) : base(goalName, description, points)
     {
 
     }
 
     //Methods
 
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
@@ -22,7 +22,7 @@ public class SimpleGoal
     {
         return true; //Change this to what is needed
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return "Addstring"; //Add string representation
     }
