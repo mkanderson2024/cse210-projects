@@ -10,10 +10,10 @@ class Program
         bool exit = false;
         Console.WriteLine("Welcome to the goals manager program.");
         GoalManager program = new GoalManager();
-        program.Start();
         while (exit == false)
         {
             //=========Main Menu=============
+            program.DisplayPlayerInfo();
             Console.WriteLine("\nPlease choose one of the following options by entering the number");
             List<string> options = new List<string> { "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit" };
             foreach (string option in options)
@@ -38,6 +38,8 @@ class Program
             if (menuInput == 2)
             {
                 program.ListGoalDetails();
+                Console.WriteLine("\nReturning to main menu.");
+                menuInput = 88;
             }
             // Save Goals
             if (menuInput == 3)
@@ -56,6 +58,8 @@ class Program
             {
                 program.ListGoalNames();
                 program.RecoredEvent();
+                Console.WriteLine("Recorded successfully! Returning to main menu.");
+                menuInput = 88;
             }
             // Quit
             if (menuInput == 6)

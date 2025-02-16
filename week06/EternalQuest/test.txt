@@ -1,2 +1,9 @@
 0
 SimpleGoal:Homework,Complete Homework before bedtime,1000000
+
+        Console.WriteLine("Which goal would you like to record an event for? ");
+        string userInput = Console.ReadLine();
+        int goalInteger = int.Parse(userInput);
+        goalInteger--;
+        var goal = _goals.ElementAt(goalInteger);
+        Console.WriteLine($"{goal}");

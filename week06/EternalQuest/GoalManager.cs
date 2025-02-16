@@ -4,11 +4,9 @@ using System.IO;
 public class GoalManager
 {
     //Member Variables & Lists
-    private int _goalInput = 0;
+    private int _goalInput;
     List<Goal> _goals = new List<Goal>();
     List<string> _goalTypes = new List<string> { "1. Simple Goal", "2. Eternal Goal", "3. Checklist Goal" };
-    List<string> _eternalResponces = new List<string>();
-    List<string> _simpleResponces = new List<string>();
     private int _score;
     //Constructor
     public GoalManager()
@@ -135,29 +133,10 @@ public class GoalManager
         string userInput = Console.ReadLine();
         int goalInteger = int.Parse(userInput);
         goalInteger--;
-
-        // System.Type observedType = _goals[goalInteger].GetType();
-        // if (observedType == typeof(SimpleGoal))
-        // {
-        IEnumerable<Goal> filteredItems = GetFilteredItems(_goals);
-        foreach (Goal item in filteredItems)
-        {
-            // do sth with your filtered items
-        }
-        // SimpleGoal sg = new SimpleGoal(nameResponce, descritpionResponce, pointsResponce, false);
-        // List<string> list = new List<string>();
-        // list = SimpleGoal.ReturnList();
-        // }
+        var goal = _goals.ElementAt(goalInteger);
+        goal.IsComplete();
+        goal.RecordEvent();
     }
-    public IEnumerable<Goal> GetFilteredItems(IEnumerable<Goal> collection)
-    {
-        foreach (Goal item in collection)
-            if (Matches<Goal>(item))
-            {
-                yield return item;
-            }
-    }
-
     public void SaveGoals()
     {
         Console.Write("Enter name of file with txt file type. Example: myfile.txt ");
@@ -208,7 +187,7 @@ public class GoalManager
     //Setters
     public int SetScore(int score)
     {
-        _score = score;
+        _score += score;
         return _score;
     }
 

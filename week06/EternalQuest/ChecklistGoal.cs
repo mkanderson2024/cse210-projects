@@ -8,7 +8,7 @@ public class ChecklistGoal : Goal
     private int _bonus = 0;
 
     //Constructors
-    public ChecklistGoal(string goalName, string description, string points, int target, int bonus) : base(goalName, description, points) //Add inherited strings from Goal
+    public ChecklistGoal(string goalName, string description, string points, int bonus, int target) : base(goalName, description, points) //Add inherited strings from Goal
     {
         _target = target;
         _bonus = bonus;
@@ -16,9 +16,9 @@ public class ChecklistGoal : Goal
 
     //Methods
 
-    public override void RecordEvent(List<Goal> list, int input)
+    public override void RecordEvent()
     {
-
+        Console.WriteLine("Found ChecklistGoal");
     }
     public override bool IsComplete()
     {
@@ -26,18 +26,10 @@ public class ChecklistGoal : Goal
     }
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description} | {_points} | {_bonus}, {_target}";
+        return $"{_shortName}: {_description} | {_points} | {_bonus} | {_target} times. Completed -- {_amountCompleted} times.";
     }
     public override string GetStringRepresentation()
     {
         return $"ChecklistGoal:{_shortName},{_description},{_points},{_bonus},{_target}";
-    }
-    public override List<string> ReturnList()
-    {
-        List<string> temp = new List<string>();
-        temp.Add(_shortName);
-        temp.Add(_description);
-        temp.Add(_points);
-        return temp;
     }
 }

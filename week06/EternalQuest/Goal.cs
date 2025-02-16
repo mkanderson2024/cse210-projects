@@ -15,7 +15,7 @@ public abstract class Goal
         _description = description;
         _points = points;
     }
-    public abstract void RecordEvent(List<Goal> list, int input);
+    public abstract void RecordEvent();
 
     public abstract bool IsComplete();
 
@@ -30,6 +30,4 @@ public abstract class Goal
     }
 
     public abstract string GetStringRepresentation();
-
-    public abstract List<string> ReturnList();
 }
