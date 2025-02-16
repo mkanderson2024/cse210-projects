@@ -14,16 +14,16 @@ public class SimpleGoal : Goal
 
     //Methods
 
-    public override void RecordEvent()
+    public override void RecordEvent(List<Goal> list, int input)
     {
 
     }
-    public bool IsComplete()
+    public override bool IsComplete()
     {
         return true; //Change this to what is needed
     }
     public override string GetStringRepresentation()
     {
-        return "Addstring"; //Add string representation
+        return $"SimpleGoal:{_shortName},{_description},{_points}";
     }
 }

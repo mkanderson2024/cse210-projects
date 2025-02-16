@@ -9,10 +9,10 @@ class Program
         Console.Clear();
         bool exit = false;
         Console.WriteLine("Welcome to the goals manager program.");
+        GoalManager program = new GoalManager();
+        program.Start();
         while (exit == false)
         {
-            GoalManager program = new GoalManager();
-            program.Start();
             //=========Main Menu=============
             Console.WriteLine("\nPlease choose one of the following options by entering the number");
             List<string> options = new List<string> { "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit" };
@@ -41,7 +41,7 @@ class Program
             // Save Goals
             if (menuInput == 3)
             {
-
+                program.SaveGoals();
             }
             // Load Goals
             if (menuInput == 4)
@@ -51,7 +51,8 @@ class Program
             // Record Event
             if (menuInput == 5)
             {
-
+                program.ListGoalNames();
+                program.RecoredEvent();
             }
             // Quit
             if (menuInput == 6)

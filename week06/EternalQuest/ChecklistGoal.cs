@@ -16,20 +16,20 @@ public class ChecklistGoal : Goal
 
     //Methods
 
-    public override void RecordEvent()
+    public override void RecordEvent(List<Goal> list, int input)
     {
 
     }
-    public bool IsComplete()
+    public override bool IsComplete()
     {
-        return true; //Change as needed
+        return true;
     }
-    public string GetDetailsString()
+    public override string GetDetailsString()
     {
-        return $"{_target}, {_bonus}";
+        return $"{_shortName}: {_description} | {_points} | {_bonus}, {_target}";
     }
     public override string GetStringRepresentation()
     {
-        return ""; //Add string for representation
+        return $"ChecklistGoal:{_shortName},{_description},{_points},{_bonus},{_target}";
     }
 }

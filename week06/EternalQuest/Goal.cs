@@ -4,9 +4,9 @@ public abstract class Goal
 {
     //Member Variables
 
-    private string _shortName = "";
-    private string _description = "";
-    private string _points = "";
+    protected string _shortName = "";
+    protected string _description = "";
+    protected string _points = "";
 
     //Constructors
     public Goal(string goalName, string description, string points)
@@ -15,14 +15,16 @@ public abstract class Goal
         _description = description;
         _points = points;
     }
-    public abstract void RecordEvent();
+    public abstract void RecordEvent(List<Goal> list, int input);
 
-    public bool IsComplete()
+    public abstract bool IsComplete();
+
+    //Getters
+    public string GetName()
     {
-        return true;
+        return _shortName;
     }
-
-    public string GetDetailsString()
+    public virtual string GetDetailsString()
     {
         return $"{_shortName}: {_description} | {_points} |";
     }

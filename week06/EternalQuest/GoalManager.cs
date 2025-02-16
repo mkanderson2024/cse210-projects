@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 public class GoalManager
 {
@@ -100,30 +101,70 @@ public class GoalManager
     }
     public void ListGoalNames()
     {
-
+        int counter = 0;
+        List<int> indexes = new List<int> { };
+        foreach (Goal g in _goals)
+        {
+            counter += 1;
+            string name = g.GetName();
+            Console.WriteLine($"{counter}. {name}");
+            indexes.Add(counter - 1);
+        }
     }
     public void ListGoalDetails()
     {
+        int counter = 0;
         foreach (Goal g in _goals)
         {
+            counter += 1;
             string goal = g.GetDetailsString();
-            Console.WriteLine($"{goal}");
+            Console.WriteLine($"{counter}. [] {goal}");
         }
-        Console.WriteLine("Check check check");
-
+        Console.Write("Press Enter to continue");
+        Console.ReadLine();
     }
 
     public void RecoredEvent()
     {
-
+        Console.WriteLine("Which goal would you like to record an event for? ");
+        string userInput = Console.ReadLine();
+        int goalInteger = int.Parse(userInput);
+        goalInteger--;
+        System.Type observedType = _goals[goalInteger].GetType();
+        if (observedType == typeof(SimpleGoal))
+        {
+            Console.WriteLine("Success");
+        }
     }
+
     public void SaveGoals()
     {
+        string fileName = "myFile.txt";
+        foreach (Goal g in _goals)
+        {
+            string outPutText = g.GetStringRepresentation();
+            using (StreamWriter outputFile = new StreamWriter(fileName))
+            {
+                // You can add text to the file with the WriteLine method
+                outputFile.WriteLine("This will be the first line in the file.");
 
+                // You can use the $ and include variables just like with Console.WriteLine
+                outputFile.WriteLine($"{outPutText}");
+            }
+        }
     }
     public void LoadGoals()
     {
+        string filename = "myFile.txt";
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+
+            string firstName = parts[0];
+            string lastName = parts[1];
+        }
     }
     public void LoadingAnimation()
     {
@@ -137,5 +178,11 @@ public class GoalManager
             Thread.Sleep(1000);
             currentTime = DateTime.Now;
         }
+    }
+    //Setters
+    public int SetScore(int score)
+    {
+        _score = score;
+        return _score;
     }
 }
