@@ -164,16 +164,18 @@ public class GoalManager
         Console.Write("Enter name of txt file you'd like to load. Example: myFile.txt ");
         string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
-
+        char[] delimiterChars = { ',', '.', ':', };
+        lines = lines.Skip(1).ToArray();
         foreach (string line in lines)
         {
-            string[] parts = line.Split(",");
-            string shortName = parts[0];
-            string description = parts[1];
+            string[] parts = line.Split(delimiterChars);
+            string type = parts[0];
+            string shortName = parts[1];
+            string description = parts[2];
             string points = parts[3];
             string bonus = parts[4];
             string target = parts[5];
-            Console.WriteLine($"{shortName},{description},{points},{bonus},{target}");
+            Console.WriteLine($"{type},{shortName},{description},{points},{bonus},{target}");
         }
     }
     public void LoadingAnimation()

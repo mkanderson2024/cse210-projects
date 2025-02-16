@@ -1,0 +1,4 @@
+1040
+SimpleGoal:Eat,Eat something,10
+EternalGoal:Read,Read Scriptures each day,10
+ChecklistGoal:Test,Test my program,10,1000,2,2
