@@ -18,6 +18,7 @@ public class GoalManager
     {
         DisplayPlayerInfo();
     }
+    //Create New Goals
     public void CreateGoal()
     {
         bool enterGoal = false;
@@ -99,6 +100,7 @@ public class GoalManager
     {
         Console.WriteLine($"You currently have {_score} points.");
     }
+    //Show list of Goal Names
     public void ListGoalNames()
     {
         int counter = 0;
@@ -111,6 +113,7 @@ public class GoalManager
             indexes.Add(counter - 1);
         }
     }
+    //Show list of Goals and details
     public void ListGoalDetails()
     {
         int counter = 0;
@@ -123,7 +126,7 @@ public class GoalManager
         Console.Write("Press Enter to continue");
         Console.ReadLine();
     }
-
+    //Record Events
     public void RecoredEvent()
     {
         Console.WriteLine("Which goal would you like to record an event for? ");
@@ -136,7 +139,7 @@ public class GoalManager
             Console.WriteLine("Success");
         }
     }
-
+    //Saving goals
     public void SaveGoals()
     {
         string fileName = "myFile.txt";
@@ -146,12 +149,13 @@ public class GoalManager
             using (StreamWriter outputFile = new StreamWriter(fileName))
             {
                 // You can add text to the file with the WriteLine method
-                outputFile.WriteLine("This will be the first line in the file.");
+                outputFile.WriteLine($"{_score}");
 
                 // You can use the $ and include variables just like with Console.WriteLine
                 outputFile.WriteLine($"{outPutText}");
             }
         }
+        
     }
     public void LoadGoals()
     {

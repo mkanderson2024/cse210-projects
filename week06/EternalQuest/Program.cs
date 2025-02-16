@@ -31,6 +31,7 @@ class Program
             if (menuInput == 1)
             {
                 program.CreateGoal();
+                Console.WriteLine("\nGoal entered Successfully! Returning to main menu.");
                 menuInput = 88;
             }
             // List Goals
@@ -42,6 +43,8 @@ class Program
             if (menuInput == 3)
             {
                 program.SaveGoals();
+                Console.WriteLine("Save Complete! Returning to main menu.");
+                menuInput = 88;
             }
             // Load Goals
             if (menuInput == 4)
@@ -66,7 +69,6 @@ class Program
             }
             if (menuInput == 88)
             {
-                Console.WriteLine("\nGoal entered Successfully! Returning to main menu.");
                 Thread.Sleep(2000);
                 menuInput = -1;
             }
