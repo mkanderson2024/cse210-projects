@@ -158,12 +158,6 @@ public class GoalManager
             }
     }
 
-    private bool Matches<Goal>(Goal item)
-    {
-        throw new NotImplementedException();
-    }
-
-    //Saving goals
     public void SaveGoals()
     {
         Console.Write("Enter name of file with txt file type. Example: myfile.txt ");
@@ -173,11 +167,13 @@ public class GoalManager
             string outPutText = g.GetStringRepresentation();
             using (StreamWriter outputFile = new StreamWriter(fileName))
             {
-                outputFile.WriteLine($"{_score}");
+                // You can add text to the file with the WriteLine method
+                outputFile.WriteLine("This will be the first line in the file.");
+
+                // You can use the $ and include variables just like with Console.WriteLine
                 outputFile.WriteLine($"{outPutText}");
             }
         }
-
     }
     public void LoadGoals()
     {
