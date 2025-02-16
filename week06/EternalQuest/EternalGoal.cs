@@ -10,12 +10,13 @@ public class EternalGoal : Goal
     }
 
     //Methods
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
         int points = int.Parse(_points);
-        Console.WriteLine("You've earned points!");
+        Console.WriteLine($"\nYou've earned {points} points!");
         GoalManager score = new GoalManager();
-        score.SetScore(points);
+        int addScore = score.SetScore(points);
+        return addScore;
     }
     public override bool IsComplete()
     {

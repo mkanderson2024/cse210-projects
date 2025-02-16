@@ -81,8 +81,9 @@ public class GoalManager
                 Console.Write("What is the bonus points value for this checklist goal? ");
                 string bonusResponce = Console.ReadLine();
                 int bonus = int.Parse(bonusResponce);
+                int completed = 0;
 
-                ChecklistGoal checklistGoal = new ChecklistGoal(nameResponce, descritpionResponce, pointsResponce, target, bonus);
+                ChecklistGoal checklistGoal = new ChecklistGoal(nameResponce, descritpionResponce, pointsResponce, bonus, completed, target);
                 _goals.Add(checklistGoal);
                 _goalInput = 0;
             }
@@ -98,7 +99,7 @@ public class GoalManager
     }
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You currently have {_score} points.");
+        Console.WriteLine($"\nYou currently have {_score} points.");
     }
     //Show list of Goal Names
     public void ListGoalNames()
@@ -116,41 +117,45 @@ public class GoalManager
     //Show list of Goals and details
     public void ListGoalDetails()
     {
+        Console.WriteLine("-----Goals List-----");
         int counter = 0;
         foreach (Goal g in _goals)
         {
             counter += 1;
             string goal = g.GetDetailsString();
-            Console.WriteLine($"{counter}. [] {goal}");
+            Console.WriteLine($"{counter}. {goal}");
         }
-        Console.Write("Press Enter to continue");
+        Console.Write("\nPress Enter to continue");
         Console.ReadLine();
     }
     //Record Events
     public void RecoredEvent()
     {
-        Console.WriteLine("Which goal would you like to record an event for? ");
+        Console.Write("Which goal would you like to record an event for? ");
         string userInput = Console.ReadLine();
         int goalInteger = int.Parse(userInput);
         goalInteger--;
         var goal = _goals.ElementAt(goalInteger);
         goal.IsComplete();
-        goal.RecordEvent();
+        _score += goal.RecordEvent();
+
     }
     public void SaveGoals()
     {
         Console.Write("Enter name of file with txt file type. Example: myfile.txt ");
         string fileName = Console.ReadLine();
-        foreach (Goal g in _goals)
+        using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            string outPutText = g.GetStringRepresentation();
-            using (StreamWriter outputFile = new StreamWriter(fileName))
+            // Adds score to text file
+            outputFile.WriteLine(_score);
+            foreach (Goal g in _goals)
             {
-                // You can add text to the file with the WriteLine method
-                outputFile.WriteLine("This will be the first line in the file.");
+                string outPutText = g.GetStringRepresentation();
 
-                // You can use the $ and include variables just like with Console.WriteLine
-                outputFile.WriteLine($"{outPutText}");
+                {
+                    //Adds goals to text
+                    outputFile.WriteLine($"{outPutText}");
+                }
             }
         }
     }

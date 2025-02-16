@@ -14,14 +14,28 @@ public class SimpleGoal : Goal
 
     //Methods
 
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
-        Console.WriteLine("Found a simple goal");
+        int points = int.Parse(_points);
+        Console.WriteLine($"\nYou've earned {points} points!");
+        GoalManager score = new GoalManager();
+        int addScore = score.SetScore(points);
+        return addScore;
 
+    }
+    public override string GetDetailsString()
+    {
+        if (_isComplete == true)
+            return $"[X] {_shortName}: {_description} | {_points} |";
+        else
+        {
+            return $"[ ] {_shortName}: {_description} | {_points} |";
+        }
     }
     public override bool IsComplete()
     {
-        return true; //Change this to what is needed
+        _isComplete = true;
+        return _isComplete; //Change this to what is needed
     }
     public override string GetStringRepresentation()
     {

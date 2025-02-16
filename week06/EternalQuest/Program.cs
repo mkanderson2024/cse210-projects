@@ -13,6 +13,7 @@ class Program
         while (exit == false)
         {
             //=========Main Menu=============
+            Console.WriteLine("\n---------Main Menu----------");
             program.DisplayPlayerInfo();
             Console.WriteLine("\nPlease choose one of the following options by entering the number");
             List<string> options = new List<string> { "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit" };
@@ -68,6 +69,7 @@ class Program
                 program.LoadingAnimation();
                 Console.WriteLine("Until Next Time! -----");
                 Thread.Sleep(2000);
+                menuInput = 88;
                 Console.Clear();
                 exit = true;
             }
