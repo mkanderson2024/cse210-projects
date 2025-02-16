@@ -7,9 +7,9 @@ public class SimpleGoal : Goal
 
     //Constructors
 
-    public SimpleGoal(string goalName, string description, string points) : base(goalName, description, points)
+    public SimpleGoal(string goalName, string description, string points, bool completion) : base(goalName, description, points)
     {
-
+        _isComplete = completion;
     }
 
     //Methods
@@ -25,5 +25,13 @@ public class SimpleGoal : Goal
     public override string GetStringRepresentation()
     {
         return $"SimpleGoal:{_shortName},{_description},{_points}";
+    }
+    public override List<string> ReturnList()
+    {
+        List<string> temp = new List<string>();
+        temp.Add(_shortName);
+        temp.Add(_description);
+        temp.Add(_points);
+        return temp;
     }
 }

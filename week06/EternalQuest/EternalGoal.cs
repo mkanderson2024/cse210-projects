@@ -22,4 +22,12 @@ public class EternalGoal : Goal
     {
         return $"EternalGoal:{_shortName},{_description},{_points}";
     }
+    public override List<string> ReturnList()
+    {
+        List<string> temp = new List<string>();
+        temp.Add(_shortName);
+        temp.Add(_description);
+        temp.Add(_points);
+        return temp;
+    }
 }

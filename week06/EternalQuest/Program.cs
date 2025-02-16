@@ -49,7 +49,7 @@ class Program
             // Load Goals
             if (menuInput == 4)
             {
-
+                program.LoadGoals();
             }
             // Record Event
             if (menuInput == 5)
@@ -79,6 +79,6 @@ class Program
                 Thread.Sleep(2000);
             }
         }
-
+        Console.Clear();
     }
 }

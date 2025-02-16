@@ -30,4 +30,6 @@ public abstract class Goal
     }
 
     public abstract string GetStringRepresentation();
+
+    public abstract List<string> ReturnList();
 }

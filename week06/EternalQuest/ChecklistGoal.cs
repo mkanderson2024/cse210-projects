@@ -32,4 +32,12 @@ public class ChecklistGoal : Goal
     {
         return $"ChecklistGoal:{_shortName},{_description},{_points},{_bonus},{_target}";
     }
+    public override List<string> ReturnList()
+    {
+        List<string> temp = new List<string>();
+        temp.Add(_shortName);
+        temp.Add(_description);
+        temp.Add(_points);
+        return temp;
+    }
 }

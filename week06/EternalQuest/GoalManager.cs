@@ -7,6 +7,8 @@ public class GoalManager
     private int _goalInput = 0;
     List<Goal> _goals = new List<Goal>();
     List<string> _goalTypes = new List<string> { "1. Simple Goal", "2. Eternal Goal", "3. Checklist Goal" };
+    List<string> _eternalResponces = new List<string>();
+    List<string> _simpleResponces = new List<string>();
     private int _score;
     //Constructor
     public GoalManager()
@@ -43,7 +45,7 @@ public class GoalManager
 
                 Console.Write("How many points is this simple goal worth? ");
                 string pointsResponce = Console.ReadLine();
-                SimpleGoal simpleGoal = new SimpleGoal(nameResponce, descritpionResponce, pointsResponce);
+                SimpleGoal simpleGoal = new SimpleGoal(nameResponce, descritpionResponce, pointsResponce, false);
                 _goals.Add(simpleGoal);
                 _goalInput = 0;
             }
@@ -133,41 +135,65 @@ public class GoalManager
         string userInput = Console.ReadLine();
         int goalInteger = int.Parse(userInput);
         goalInteger--;
-        System.Type observedType = _goals[goalInteger].GetType();
-        if (observedType == typeof(SimpleGoal))
+
+        // System.Type observedType = _goals[goalInteger].GetType();
+        // if (observedType == typeof(SimpleGoal))
+        // {
+        IEnumerable<Goal> filteredItems = GetFilteredItems(_goals);
+        foreach (Goal item in filteredItems)
         {
-            Console.WriteLine("Success");
+            // do sth with your filtered items
         }
+        // SimpleGoal sg = new SimpleGoal(nameResponce, descritpionResponce, pointsResponce, false);
+        // List<string> list = new List<string>();
+        // list = SimpleGoal.ReturnList();
+        // }
     }
+    public IEnumerable<Goal> GetFilteredItems(IEnumerable<Goal> collection)
+    {
+        foreach (Goal item in collection)
+            if (Matches<Goal>(item))
+            {
+                yield return item;
+            }
+    }
+
+    private bool Matches<Goal>(Goal item)
+    {
+        throw new NotImplementedException();
+    }
+
     //Saving goals
     public void SaveGoals()
     {
-        string fileName = "myFile.txt";
+        Console.Write("Enter name of file with txt file type. Example: myfile.txt ");
+        string fileName = Console.ReadLine();
         foreach (Goal g in _goals)
         {
             string outPutText = g.GetStringRepresentation();
             using (StreamWriter outputFile = new StreamWriter(fileName))
             {
-                // You can add text to the file with the WriteLine method
                 outputFile.WriteLine($"{_score}");
-
-                // You can use the $ and include variables just like with Console.WriteLine
                 outputFile.WriteLine($"{outPutText}");
             }
         }
-        
+
     }
     public void LoadGoals()
     {
-        string filename = "myFile.txt";
+        Console.Write("Enter name of txt file you'd like to load. Example: myFile.txt ");
+        string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
 
         foreach (string line in lines)
         {
             string[] parts = line.Split(",");
-
-            string firstName = parts[0];
-            string lastName = parts[1];
+            string shortName = parts[0];
+            string description = parts[1];
+            string points = parts[3];
+            string bonus = parts[4];
+            string target = parts[5];
+            Console.WriteLine($"{shortName},{description},{points},{bonus},{target}");
         }
     }
     public void LoadingAnimation()
@@ -189,4 +215,5 @@ public class GoalManager
         _score = score;
         return _score;
     }
+
 }
