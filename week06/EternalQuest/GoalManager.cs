@@ -103,7 +103,7 @@ public class GoalManager
         Console.WriteLine("\n------Player Levels-------\n");
         if (_score >= 0)
         {
-            Console.Write(" |Noob. Just noob.| ");
+            Console.Write(" |'In da beninging'| ");
         }
         if (_score >= 100)
         {
