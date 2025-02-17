@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-
+//For added creativity, added a section that presents "Player levels" based upon score capping out at high flying unicorn found in the DisplayPlayerInfo method.
 public class GoalManager
 {
     //Member Variables & Lists
