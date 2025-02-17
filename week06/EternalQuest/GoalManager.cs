@@ -16,7 +16,7 @@ public class GoalManager
     //Methods
     public void Start()
     {
-        DisplayPlayerInfo();
+        Console.WriteLine("Welcome to the goals manager program.");
     }
     //Create New Goals
     public void CreateGoal()
@@ -100,6 +100,28 @@ public class GoalManager
     public void DisplayPlayerInfo()
     {
         Console.WriteLine($"\nYou currently have {_score} points.");
+        Console.WriteLine("\n------Player Levels-------\n");
+        if (_score >= 0)
+        {
+            Console.Write(" |Noob. Just noob.| ");
+        }
+        if (_score >= 100)
+        {
+            Console.Write(" |Not so noobish...| ");
+        }
+        if (_score >= 1000)
+        {
+            Console.Write(" |Goal Getting Golum!| ");
+        }
+        if (_score >= 10000)
+        {
+            Console.Write(" |High flying unicorn!| ");
+        }
+        else
+        {
+            Console.Write(" |Doing more point mining>");
+        }
+        Console.WriteLine("\n\n--------------------------");
     }
     //Show list of Goal Names
     public void ListGoalNames()
@@ -162,8 +184,14 @@ public class GoalManager
     public void LoadGoals()
     {
         Console.Write("Enter name of txt file you'd like to load. Example: myFile.txt ");
-        string filename = Console.ReadLine();
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        string fileName = Console.ReadLine();
+        using (StreamReader reader = new StreamReader(fileName))
+        {
+            string scoreLine = reader.ReadLine() ?? "";
+            int score = int.Parse(scoreLine);
+            _score += score;
+        }
+        string[] lines = System.IO.File.ReadAllLines(fileName);
         char[] delimiterChars = { ',', '.', ':', };
         lines = lines.Skip(1).ToArray();
         foreach (string line in lines)
@@ -173,9 +201,39 @@ public class GoalManager
             string shortName = parts[1];
             string description = parts[2];
             string points = parts[3];
-            string bonus = parts[4];
-            string target = parts[5];
-            Console.WriteLine($"{type},{shortName},{description},{points},{bonus},{target}");
+            //For ChecklistGoals
+            if (type == "ChecklistGoal")
+            {
+                string bonus = parts[4];
+                string completed = parts[5];
+                string target = parts[6];
+                //Check Spot
+                // Console.WriteLine($"{type},{shortName},{description},{points},{bonus},{completed},{target}");
+                int ibonus = int.Parse(bonus);
+                int icompleted = int.Parse(completed);
+                int itarget = int.Parse(target);
+                ChecklistGoal checklistGoal = new ChecklistGoal(shortName, description, points, ibonus, icompleted, itarget);
+                _goals.Add(checklistGoal);
+            }
+            //For Simple Goal
+            else if (type == "SimpleGoal")
+            {
+                string isComplete = parts[4];
+                //Check Spot
+                // Console.WriteLine($"{type},{shortName},{description},{points}, {isComplete}");
+                bool simpleBool = bool.Parse(isComplete);
+                SimpleGoal simpleGoal = new SimpleGoal(shortName, description, points, simpleBool);
+                _goals.Add(simpleGoal);
+
+            }
+            //For Eternal Goal
+            else
+            {
+                //Check Spot
+                // Console.WriteLine($"{type},{shortName},{description},{points}");
+                EternalGoal eternalGoal = new EternalGoal(shortName, description, points);
+                _goals.Add(eternalGoal);
+            }
         }
     }
     public void LoadingAnimation()

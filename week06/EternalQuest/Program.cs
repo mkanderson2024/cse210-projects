@@ -8,8 +8,8 @@ class Program
         int menuInput = -1;
         Console.Clear();
         bool exit = false;
-        Console.WriteLine("Welcome to the goals manager program.");
         GoalManager program = new GoalManager();
+        program.Start();
         while (exit == false)
         {
             //=========Main Menu=============
@@ -53,6 +53,8 @@ class Program
             if (menuInput == 4)
             {
                 program.LoadGoals();
+                Console.WriteLine("Load successful! Returning to main menu.");
+                menuInput = 88;
             }
             // Record Event
             if (menuInput == 5)
