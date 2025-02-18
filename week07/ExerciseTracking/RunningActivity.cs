@@ -3,26 +3,26 @@ using System;
 public class RunningActivity : Activity
 {
     //Member Variables
-    private float _distance;
-    private float _speed;
-    private float _pace;
-    public RunningActivity(string date, int time, float distance, float speed, float pace) : base(date, time)
+    private decimal _distance;
+    private decimal _speed;
+    private decimal _pace;
+    public RunningActivity(string date, int time, decimal distance, decimal speed, decimal pace) : base(date, time)
     {
         _distance = distance;
         _speed = speed;
         _pace = pace;
     }
 
-    public override double GetDistance()
+    public override decimal GetDistance()
     {
         return _distance;
     }
-    public override double GetSpeed(int time)
+    public override decimal GetSpeed()
     {
-        _speed = _distance / time * 60;
+        _speed = _distance / _time * 60;
         return _speed;
     }
-    public override double GetPace(int speed)
+    public override decimal GetPace()
     {
         _pace = 60 / _speed;
         return _pace;
@@ -30,6 +30,6 @@ public class RunningActivity : Activity
 
     public override void GetSummary()
     {
-
+        Console.WriteLine($"{_date} Running ({_time} min) - Distance {_distance} miles, Speed {_speed} mph, Pace: {_pace} min per mile.");
     }
 }

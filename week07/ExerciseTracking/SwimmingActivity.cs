@@ -3,30 +3,38 @@ using System;
 public class SwimmingActivity : Activity
 {
     //Member Variables
-    private float _distance;
-    private float _speed;
-    private float _pace;
-    public SwimmingActivity(string date, int time, float distance, float speed, float pace) : base(date, time)
+    private decimal _distance;
+    private decimal _speed;
+    private decimal _pace;
+    private int _laps;
+    public SwimmingActivity(string date, int time, decimal distance, decimal speed, decimal pace, int laps) : base(date, time)
     {
         _distance = distance;
         _speed = speed;
         _pace = pace;
+        _laps = laps;
     }
-    public override double GetDistance()
+    public override decimal GetDistance()
     {
-        return 0;
+        _distance = _laps * 50.0m / 1000.0m * 0.62m;
+        return _distance;
     }
-    public override double GetSpeed(int time)
+    public override decimal GetSpeed()
     {
-        return 0;
+        _speed = _distance / _time * 60;
+        return _speed;
     }
-    public override double GetPace(int speed)
+    public override decimal GetPace()
     {
-        return 0;
+        _pace = 60 / _speed;
+        return _pace;
     }
 
     public override void GetSummary()
     {
-
+        decimal d = Math.Round(_distance, 1, MidpointRounding.ToEven);
+        decimal p = Math.Round(_pace, 1, MidpointRounding.ToEven);
+        decimal s = Math.Round(_speed, 1, MidpointRounding.ToEven);
+        Console.WriteLine($"{_date} Swimming ({_time} min) - Distance {d} miles, Speed {_speed} mph, Pace: {p} min per mile.");
     }
 }

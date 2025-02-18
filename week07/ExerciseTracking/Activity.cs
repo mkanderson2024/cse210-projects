@@ -8,7 +8,8 @@ public abstract class Activity
     //Constructor
     public Activity(string date, int time)
     {
-
+        _date = date;
+        _time = time;
     }
     //Methods
     public string GetDate(string date)
@@ -22,9 +23,9 @@ public abstract class Activity
         return _time;
     }
     //Abstract Methods
-    public abstract double GetDistance();
-    public abstract double GetSpeed(int time);
-    public abstract double GetPace(int speed);
+    public abstract decimal GetDistance();
+    public abstract decimal GetSpeed();
+    public abstract decimal GetPace();
 
     public abstract void GetSummary();
 }
